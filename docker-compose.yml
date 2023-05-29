@@ -27,28 +27,6 @@ services:
     env_file:
       - ./hadoop.env
 
-  datanode1:
-    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
-    container_name: datanode1
-    restart: always
-    volumes:
-      - hadoop_datanode1:/hadoop/dfs/data
-    environment:
-      SERVICE_PRECONDITION: "namenode:9870"
-    env_file:
-      - ./hadoop.env
-
-  datanode2:
-    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
-    container_name: datanode2
-    restart: always
-    volumes:
-      - hadoop_datanode2:/hadoop/dfs/data
-    environment:
-      SERVICE_PRECONDITION: "namenode:9870"
-    env_file:
-      - ./hadoop.env
-
   resourcemanager:
     image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.2.1-java8
     container_name: resourcemanager
@@ -82,8 +60,6 @@ volumes:
   hadoop_home:
   hadoop_namenode:
   hadoop_datanode:
-  hadoop_datanode1:
-  hadoop_datanode2:
   hadoop_historyserver:
 
 
