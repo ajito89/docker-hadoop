@@ -1,0 +1,18 @@
+To install a Hadoop cluster with a minimum of 3 nodes using Docker on your MacBook M1 Pro, you can follow these steps:
+
+Update Docker Desktop: Ensure that you have the latest version of Docker Desktop installed. Open Docker Desktop and go to Preferences > Resources > Updates to check for any available updates and install them.
+
+Prepare the Docker Compose file: Create a docker-compose.yml file with the following content:
+--use file
+This docker-compose.yml file defines three services: namenode, datanode1, and datanode2. Each service corresponds to a node in the Hadoop cluster, including a NameNode and two DataNodes. The ports 50070, 50075, and 50076 are exposed to access the Hadoop web interface and DataNode status.
+
+Start the Hadoop cluster: Open a terminal and navigate to the directory containing the docker-compose.yml file. Run the following command to start the Hadoop cluster:
+shell
+Copy code
+docker-compose up -d
+This command starts the Hadoop cluster in detached mode, meaning it runs in the background.
+
+Access the Hadoop cluster: After the cluster is started, you can access the Hadoop web interface by opening your web browser and visiting http://localhost:50070. This interface provides information about the Hadoop cluster, including the cluster's overall health, file system status, and more.
+Additionally, you can access the individual DataNode web interfaces by visiting http://localhost:50075 for the first DataNode and http://localhost:50076 for the second DataNode.
+
+Now you have a Hadoop cluster running on your MacBook M1 Pro with a minimum of 3 nodes using Docker. You can interact with the cluster, upload data, run MapReduce jobs, and perform various data processing and analysis tasks.

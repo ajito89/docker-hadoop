@@ -1,0 +1,48 @@
+version: '3'
+services:
+  namenode:
+    image: sequenceiq/hadoop-docker:2.7.1
+    container_name: namenode
+    ports:
+      - "50070:50070"
+    hostname: namenode
+    environment:
+      - CLUSTER_NAME=hadoop-cluster
+    volumes:
+      - hadoop_namenode:/hadoop/dfs/name
+    networks:
+      - hadoop
+
+  datanode1:
+    image: sequenceiq/hadoop-docker:2.7.1
+    container_name: datanode1
+    ports:
+      - "50075:50075"
+    hostname: datanode1
+    environment:
+      - CLUSTER_NAME=hadoop-cluster
+    volumes:
+      - hadoop_datanode1:/hadoop/dfs/data
+    networks:
+      - hadoop
+
+  datanode2:
+    image: sequenceiq/hadoop-docker:2.7.1
+    container_name: datanode2
+    ports:
+      - "50076:50075"
+    hostname: datanode2
+    environment:
+      - CLUSTER_NAME=hadoop-cluster
+    volumes:
+      - hadoop_datanode2:/hadoop/dfs/data
+    networks:
+      - hadoop
+
+networks:
+  hadoop:
+
+volumes:
+  hadoop_namenode:
+  hadoop_datanode1:
+  hadoop_datanode2:
